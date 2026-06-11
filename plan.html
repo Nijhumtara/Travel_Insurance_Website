@@ -27,32 +27,36 @@
 
       <!-- Body Section -->
       <div id="plan_body">
-        <!-- First Part of the body -->
-        <div id="first_part">
-          <div id="get_quote" class="process-container">
-            <img src="Imgs/tick.svg fill.png" alt="tick.svg" />
-            <p class="title">Get Quote</p>
-          </div>
-          <div id="plan_option" class="process-container">
-            <img src="Imgs/planVector.png" alt="planVector" />
-            <p class="title">Plan Option</p>
-          </div>
-          <div id="travellers" class="process-container">
-            <p class="circle"></p>
-            <p class="title">Travellers</p>
-          </div>
-          <div id="payment" class="process-container">
-            <p class="circle"></p>
-            <p class="title">Payment</p>
-          </div>
-        </div>
-        <!-- Process Completed lines -->
-        <div id="process-lines">
-          <span class="process-line" id="get-quote-line"></span>
-          <span class="process-line" id="plan-process-line"></span>
-          <span class="process-line" id="travel-process-line"></span>
-        </div>
+        <!-- Step Progress Bar -->
+        <div class="stepper-wrapper">
+          <div class="stepper">
 
+    <!-- Step 1: Done -->
+            <div class="step done">
+              <div class="step-icon">&#10003;</div>
+              <div class="step-label">Get Quote</div>
+            </div>
+
+    <!-- Step 2: Active -->
+            <div class="step active">
+              <div class="step-icon">&#9992;</div>
+              <div class="step-label">Plan Option</div>
+            </div>
+
+    <!-- Step 3: Inactive -->
+            <div class="step inactive">
+              <div class="step-icon"></div>
+              <div class="step-label">Travellers</div>
+            </div>
+
+    <!-- Step 4: Inactive -->
+            <div class="step inactive">
+              <div class="step-icon"></div>
+              <div class="step-label">Payment</div>
+            </div>
+
+          </div>
+        </div>
         <!-- Second Part of the body -->
         <div id="second_part">
           <div id="details_container">
@@ -88,7 +92,6 @@
                 <p>From</p>
                 <span>$17.37</span>
               </div>
-              <span class="cut-line"></span>
               <div class="total-cost">
                 <p>$15</p>
                 <p class="decimal">.98</p>
@@ -103,7 +106,6 @@
                 <p>From</p>
                 <span>$44.94</span>
               </div>
-              <span class="cut-line"></span>
               <div class="total-cost">
                 <p>$41</p>
                 <p class="decimal">.34</p>

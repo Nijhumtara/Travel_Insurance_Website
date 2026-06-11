@@ -47,63 +47,106 @@ header {
   font-size: 14px;
   font-weight: 400;
 }
-#first_part {
-  height: auto;
-  width: 100%;
-  position: relative;
+.stepper-wrapper {
+  background: #fff;
+  padding: 20px 60px;
+  border-bottom: 1px solid #eee;
+  width: 100%;        /* add this */
+  box-sizing: border-box;  /* add this */
+}
+
+.stepper {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2.5rem;
-  padding: 1rem 0;
-  background-color: #ffffff;
-  color: #212529;
-  box-shadow: 0px 0px 10px -8px #000000;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
 }
-#first_part img {
-  z-index: 10;
+
+/* ── Lines ── */
+/* Grey line (full width between step centers) */
+.stepper::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: calc(100% / 8);
+  right: calc(100% / 8);
+  height: 2px;
+  background: #ccc;
+  z-index: 0;
 }
-.process-container {
+
+/* Blue line (from step 1 to step 2) */
+.stepper::after {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: calc(100% / 8);
+  width: calc(100% / 4);   /* 1 gap out of 3 total gaps */
+  height: 2px;
+  background: #1a5f9e;
+  z-index: 1;
+}
+
+/* ── Each step ── */
+.step {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  row-gap: 0.4rem;
-  z-index: 1001;
+  flex: 1;
+  z-index: 2;
 }
-.circle {
-  height: 17px;
-  width: 17px;
+
+/* ── Circle/Icon ── */
+.step-icon {
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  border: 2px solid #e2e2e2;
-  z-index: 10;
-}
-.process-line {
-  height: 2px;
-  width: 94px;
-}
-#get-quote-line {
-  background-color: #0078d4;
-  margin-right: 0rem;
-  padding-right: 0.2rem;
-}
-#plan-process-line,
-#travel-process-line {
-  background-color: #e2e2e2;
-}
-#plan-process-line {
-  width: 92px;
-  margin-left: 0.7rem;
-}
-#travel-process-line {
-  width: 80px;
-  margin-left: 0.7rem;
-}
-#process-lines {
+  border: 2px solid #ccc;
+  background: #fff;
   display: flex;
-  column-gap: 0.5rem;
-  position: absolute;
-  top: 17.2%;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  margin-bottom: 6px;
+  color: #ccc;
+}
+
+/* Done: filled navy circle with white checkmark */
+.step.done .step-icon {
+  background: #1a5f9e;
+  border-color: #1a5f9e;
+  color: #fff;
+  font-size: 14px;
+}
+
+/* Active: plane icon, no circle, blue color */
+.step.active .step-icon {
+  border: none;
+  background: transparent;
+  color: #1a5f9e;
+  font-size: 22px;
+  width: 30px;
+  height: 30px;
+}
+
+/* ── Labels ── */
+.step-label {
+  font-size: 12px;
+  color: #aaa;
+  white-space: nowrap;
+  margin-top: 2px;
+}
+
+.step.done .step-label {
+  color: #333;
+  font-weight: 500;
+}
+
+.step.active .step-label {
+  color: #1a5f9e;
+  font-weight: 600;
 }
 
 /* Second Part */
@@ -112,7 +155,6 @@ header {
   display: flex;
   align-items: center;
   gap: 16rem;
-  padding: 1rem 0;
 }
 
 #details_container {
@@ -121,6 +163,7 @@ header {
   display: flex;
   flex-direction: column;
   row-gap: 1rem;
+  padding: 30px;
 }
 .container {
   display: flex;
@@ -144,6 +187,7 @@ h2 {
   padding: 0.3rem 0.5rem;
   border: 1px solid #0078d4;
   border-radius: 0.2rem;
+  margin-right: 30px;
 }
 #edit_btn button {
   background: none;
@@ -220,20 +264,8 @@ h2 {
   color: #909395;
 }
 .from-cost span {
-  position: relative;
+  text-decoration: line-through;
 }
-/* Styling cut line to actual cost */
-.cut-line {
-  position: absolute;
-  height: 1.5px;
-  width: 45px;
-  background-color: #909395;
-}
-#voyagar-plus-box .cut-line {
-  bottom: -24.5%;
-  right: 40.5%;
-}
-
 /* Styling total cost */
 .total-cost {
   display: flex;

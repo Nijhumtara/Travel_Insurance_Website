@@ -45,64 +45,107 @@ header {
   align-items: center;
   justify-content: center;
 }
-#first_part {
-  height: auto;
-  width: 100%;
-  position: relative;
+.stepper-wrapper {
+  background: #fff;
+  padding: 20px 60px;
+  border-bottom: 1px solid #eee;
+  width: 100%;        /* add this */
+  box-sizing: border-box;  /* add this */
+}
+
+.stepper {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16.5rem;
-  padding: 1rem 0;
-  background-color: #ffffff;
-  color: #212529;
-  box-shadow: 0px 0px 10px -8px #000000;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
 }
-#first_part img {
-  z-index: 10;
+
+/* ── Lines ── */
+/* Grey line (full width between step centers) */
+.stepper::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: calc(100% / 8);
+  right: calc(100% / 8);
+  height: 2px;
+  background: #ccc;
+  z-index: 0;
 }
-.process-container {
+
+/* Blue line (from step 1 to step 2) */
+.stepper::after {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: calc(100% / 8);
+  width: calc(100% / 4);   /* 1 gap out of 3 total gaps */
+  height: 2px;
+  background: #1a5f9e;
+  z-index: 1;
+}
+
+/* ── Each step ── */
+.step {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  row-gap: 0.4rem;
-  z-index: 1001;
-}
-.circle {
-  height: 24px;
-  width: 24px;
-  border-radius: 50%;
-  border: 2px solid #e2e2e2;
-  z-index: 10;
-}
-.process-line {
-  height: 2px;
-  width: 280px;
-}
-#get-quote-line {
-  background-color: #0078d4;
-  margin-right: 0.2rem;
-}
-#plan-process-line,
-#travel-process-line {
-  background-color: #e2e2e2;
-}
-#plan-process-line {
-  width: 276px;
-  margin-left: 0.8rem;
-}
-#travel-process-line {
-  width: 263px;
-  margin-left: 1.4rem;
-}
-#process-lines {
-  display: flex;
-  column-gap: 0.5rem;
-  position: absolute;
-  top: 15.8%;
+  flex: 1;
+  z-index: 2;
 }
 
+/* ── Circle/Icon ── */
+.step-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  margin-bottom: 6px;
+  color: #ccc;
+}
+
+/* Done: filled navy circle with white checkmark */
+.step.done .step-icon {
+  background: #1a5f9e;
+  border-color: #1a5f9e;
+  color: #fff;
+  font-size: 14px;
+}
+
+/* Active: plane icon, no circle, blue color */
+.step.active .step-icon {
+  border: none;
+  background: transparent;
+  color: #1a5f9e;
+  font-size: 22px;
+  width: 30px;
+  height: 30px;
+}
+
+/* ── Labels ── */
+.step-label {
+  font-size: 12px;
+  color: #aaa;
+  white-space: nowrap;
+  margin-top: 2px;
+}
+
+.step.done .step-label {
+  color: #333;
+  font-weight: 500;
+}
+
+.step.active .step-label {
+  color: #1a5f9e;
+  font-weight: 600;
+}
 /* Second Part of Body section */
 #second_part {
   height: auto;
@@ -120,7 +163,6 @@ header {
   flex-wrap: wrap;
   align-items: center;
   column-gap: 11rem;
-  /* justify-content: space-evenly; */
   margin-left: 11rem;
 }
 .container {
@@ -193,29 +235,12 @@ header {
   color: #909395;
 }
 .from-cost span {
-  position: relative;
+  text-decoration: line-through;
 }
 .box p {
   color: #909395;
   font-size: 12px;
 }
-
-/* Styling cut line to actual cost */
-.cut-line {
-  position: absolute;
-  height: 1.5px;
-  width: 45px;
-  background-color: #909395;
-}
-#voyagar-box .cut-line {
-  top: 66.1%;
-  left: 49.7%;
-}
-#voyagar-plus-box .cut-line {
-  top: 66.1%;
-  right: 21.7%;
-}
-
 /* Styling total cost */
 .total-cost {
   display: flex;
