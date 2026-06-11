@@ -3,7 +3,7 @@
 A responsive multi-step travel insurance web application built as part of a front-end developer job assessment.
 
 ## 🌐 Live Demo
-[View Live](#) https://nijhumtara.github.io/Travel_Insurance_Website/
+https://nijhumtara.github.io/Travel_Insurance_Website/
 
 ## 🛠️ Built With
 - HTML5
